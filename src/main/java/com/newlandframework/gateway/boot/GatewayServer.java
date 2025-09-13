@@ -34,8 +34,8 @@ public class GatewayServer {
         out.println("/_/ /_/\\___/\\__/\\__/\\__, /\\__, /\\__,_/\\__/\\___/|__/|__/\\__,_/\\__, /  ");
         out.println("                   /____//____/                             /____/   ");
         out.println();
-        out.println("NettyGateway 1.0,Build 2018/4/18,Author:tangjie");
-        out.println("https://github.com/tang-jie/NettyGateway");
+        out.println("NettyGateway 1.0,Build 2018/4/18,Author:David Yu");
+        out.println("https://github.com/davidyu/NettyGateway");
         out.print(JVM_INFO);
         out.print(HOST_INFO);
         out.println("PORT : " + PORT + "\n");
