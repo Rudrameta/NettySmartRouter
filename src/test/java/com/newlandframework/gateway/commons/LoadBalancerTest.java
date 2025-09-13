@@ -81,7 +81,7 @@ public class LoadBalancerTest {
     }
     
     @Test
-    public void testStrategyName() {
+    public void testStrategyUseName() {
         LoadBalancer balancer1 = new LoadBalancer("roundRobin");
         LoadBalancer balancer2 = new LoadBalancer("random");
         
@@ -91,7 +91,7 @@ public class LoadBalancerTest {
     
     @Test
     public void testInvalidStrategy() {
-        LoadBalancer balancer = new LoadBalancer("invalidStrategy");
+        LoadBalancer balancer = new LoadBalancer("invalidStrategyUse1");
         List<String> servers = Arrays.asList("server1", "server2");
         
         // Should fallback to round robin
