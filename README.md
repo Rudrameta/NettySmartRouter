@@ -1,5 +1,6 @@
-# NettySmartRouter
 
+# NettySmartRouter
+<img width="3367" height="1793" alt="netty_smart_router_diagram" src="https://github.com/user-attachments/assets/e17db604-bcc3-4c2c-a419-1c36e7f7b174" />
 A high-performance HTTP router built with Netty and Spring Framework, designed for intelligent content-based request routing and load balancing.
 
 ## Overview
