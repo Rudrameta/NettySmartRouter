@@ -1,9 +1,7 @@
 package com.newlandframework.gateway.netty;
 
 import com.newlandframework.gateway.commons.GatewayAttribute;
-import com.newlandframework.gateway.commons.GatewayOptions;
 import com.newlandframework.gateway.commons.HttpClientUtils;
-import com.newlandframework.gateway.commons.LoadBalancer;
 import com.newlandframework.gateway.commons.RouteAttribute;
 import com.newlandframework.gateway.commons.RoutingLoader;
 import io.netty.buffer.ByteBuf;
@@ -28,13 +26,6 @@ import static io.netty.handler.codec.http.HttpResponseStatus.CONTINUE;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
-/**
- * Gateway server handler with load balancing support
- * Processes HTTP requests and routes them to backend servers using load balancing
- * 
- * @author David Yu
- * @version 1.0
- */
 public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
     private HttpRequest request;
     private StringBuilder buffer = new StringBuilder();
@@ -43,9 +34,6 @@ public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
     private StringBuilder respone;
     private GlobalEventExecutor executor = GlobalEventExecutor.INSTANCE;
     private CountDownLatch latch = new CountDownLatch(1);
-    
-    // Load balancer instance
-    private LoadBalancer loadBalancer;
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
@@ -116,17 +104,9 @@ public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
         ctx.close();
     }
 
-    /**
-     * Match URL with load balancing support
-     * First tries content-based routing, then applies load balancing to default addresses
-     * 
-     * @return Selected URL for request forwarding
-     */
     private String matchUrl() {
-        // First, try content-based routing (existing logic)
         for (GatewayAttribute gateway : RoutingLoader.GATEWAYS) {
             if (gateway.getServerPath().equals(uri)) {
-                // Check for specific route matches first
                 for (RouteAttribute route : RoutingLoader.ROUTERS) {
                     if (route.getServerPath().equals(uri)) {
                         String[] keys = StringUtils.delimitedListToStringArray(route.getKeyWord(), GATEWAY_OPTION_KEY_WORD_SPLIT);
@@ -139,76 +119,15 @@ public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
                             }
                         }
                         if (match) {
-                            // Apply load balancing to matched address if it contains multiple servers
-                            return applyLoadBalancing(route.getMatchAddr());
+                            return route.getMatchAddr();
                         }
                     }
                 }
 
-                // Apply load balancing to default address
-                return applyLoadBalancing(gateway.getDefaultAddr());
+                return gateway.getDefaultAddr();
             }
         }
         return GATEWAY_OPTION_LOCALHOST;
-    }
-    
-    /**
-     * Apply load balancing to server addresses
-     * If the address contains multiple servers (comma-separated), use load balancer
-     * Otherwise, return the address as-is
-     * 
-     * @param serverAddress Server address(es) to balance
-     * @return Selected server address
-     */
-    private String applyLoadBalancing(String serverAddress) {
-        if (serverAddress == null || serverAddress.trim().isEmpty()) {
-            return GATEWAY_OPTION_LOCALHOST;
-        }
-        
-        // Check if load balancing is enabled and address contains multiple servers
-        if (isLoadBalancingApplicable(serverAddress)) {
-            if (loadBalancer == null) {
-                // Initialize load balancer with default strategy
-                loadBalancer = new LoadBalancer();
-            }
-            
-            String selectedServer = loadBalancer.selectServer(serverAddress, buffer.toString());
-            if (selectedServer != null) {
-                System.out.println("[NETTY-GATEWAY] Load balancing: " + serverAddress + " -> " + selectedServer);
-                return selectedServer;
-            }
-        }
-        
-        return serverAddress;
-    }
-    
-    /**
-     * Check if load balancing should be applied to the given server address
-     * 
-     * @param serverAddress Server address to check
-     * @return true if load balancing should be applied
-     */
-    private boolean isLoadBalancingApplicable(String serverAddress) {
-        // Check if address contains multiple servers (comma-separated)
-        return serverAddress.contains(",");
-    }
-    
-    /**
-     * Set the load balancer instance
-     * 
-     * @param loadBalancer Load balancer to use
-     */
-    public void setLoadBalancer(LoadBalancer loadBalancer) {
-        this.loadBalancer = loadBalancer;
-    }
-    
-    /**
-     * Get the current load balancer instance
-     * 
-     * @return Current load balancer
-     */
-    public LoadBalancer getLoadBalancer() {
-        return loadBalancer;
     }
 
     private void writeResponse(StringBuilder respone, HttpObject current, ChannelHandlerContext ctx) {
@@ -235,3 +154,4 @@ public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
         ctx.write(response);
     }
 }
+
