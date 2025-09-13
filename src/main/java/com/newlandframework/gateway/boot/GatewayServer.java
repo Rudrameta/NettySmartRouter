@@ -42,7 +42,7 @@ public class GatewayServer {
         out.println("NettyGateway start success!");
         out.flush();
     }
-
+    // start the program
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:netty-gateway.xml");
         PORT = ((GatewayOptions) context.getBean("options")).getGatewayPort();
